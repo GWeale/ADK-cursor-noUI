@@ -11,7 +11,7 @@ class TestFileSystemTool(unittest.TestCase):
     def setUp(self):
         """Set up test fixtures before each test method."""
         self.test_content = "This is test content for unit testing."
-        self.test_file_path = "tests/temp_test.txt"
+        self.test_file_path = "coding_agent/tests/temp_test.txt"
         self.full_test_path = os.path.join(PROJECT_ROOT, self.test_file_path)
         
         os.makedirs(os.path.dirname(self.full_test_path), exist_ok=True)
@@ -27,10 +27,13 @@ class TestFileSystemTool(unittest.TestCase):
     def test_is_path_safe_valid_paths(self):
         """Test that valid paths within the project root are considered safe."""
         valid_paths = [
-            "tests/test_file.txt",
-            "agent.py",
-            "tools/file_system_tool.py",
-            "subfolder/file.txt"  # check if even there
+            "coding_agent/tests/test_file.txt",
+            "coding_agent/agent.py",
+            "coding_agent/tools/file_system_tool.py",
+            "example_code.py",
+            "sample_html.html",
+            "requirements.txt",
+            "subfolder/file.txt"  # Even if it doesn't exist
         ]
         
         for path in valid_paths:
@@ -57,7 +60,7 @@ class TestFileSystemTool(unittest.TestCase):
     
     def test_read_file_not_found(self):
         """Test reading a non-existent file within the project directory."""
-        result = read_file("tests/nonexistent_file.txt")
+        result = read_file("coding_agent/tests/nonexistent_file.txt")
         self.assertIn("Error: File not found", result)
         self.assertIn("nonexistent_file.txt", result)
     
@@ -70,7 +73,7 @@ class TestFileSystemTool(unittest.TestCase):
     def test_write_file_success(self):
         """Test successfully writing to a file within the project directory."""
         new_content = "This is new test content."
-        new_file_path = "tests/new_test_file.txt"
+        new_file_path = "coding_agent/tests/new_test_file.txt"
         
         result = write_file(new_file_path, new_content)
         self.assertIn("Successfully wrote to", result)
@@ -90,7 +93,7 @@ class TestFileSystemTool(unittest.TestCase):
     def test_write_file_create_directory(self):
         """Test writing to a file in a new subdirectory (should create the directory)."""
         new_content = "Content in new directory."
-        new_file_path = "tests/new_subdir/test_file.txt"
+        new_file_path = "coding_agent/tests/new_subdir/test_file.txt"
         
         result = write_file(new_file_path, new_content)
         self.assertIn("Successfully wrote to", result)
@@ -103,8 +106,8 @@ class TestFileSystemTool(unittest.TestCase):
             written_content = f.read()
         self.assertEqual(written_content, new_content)
         
-        # same sucess make sure this is correctly written
-        shutil.rmtree(os.path.join(PROJECT_ROOT, "tests/new_subdir"))
+        # Clean up
+        shutil.rmtree(os.path.join(PROJECT_ROOT, "coding_agent/tests/new_subdir"))
     
     def test_write_file_unsafe_path(self):
         """Test writing to a file outside the project directory."""

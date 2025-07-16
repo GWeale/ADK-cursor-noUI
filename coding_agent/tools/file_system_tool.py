@@ -1,12 +1,13 @@
 import os
 from google.adk.tools import FunctionTool
 
-# define the project root as a security sandbox
-PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+# IMPORTANT: Define the project root as a security sandbox
+# this should point to the workspace root (parent of coding_agent folder)
+PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 def _is_path_safe(path: str) -> bool:
     """Checks if the provided path is within the project root."""
-    # make sure the absolute path to prevent directory traversal attacks (e.g., "../..")
+    # absolute path to prevent directory traversal attacks (e.g., "../..")
     abs_path = os.path.abspath(os.path.join(PROJECT_ROOT, path))
     return abs_path.startswith(PROJECT_ROOT)
 
