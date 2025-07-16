@@ -1,7 +1,6 @@
 import os
 from google.adk.tools import FunctionTool
 
-# IMPORTANT: Define the project root as a security sandbox
 # this should point to the workspace root (parent of coding_agent folder)
 PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 

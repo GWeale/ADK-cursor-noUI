@@ -1,14 +1,8 @@
 #!/usr/bin/env python3
-"""
-Demo script for the FileSystemTool.
-This demonstrates the secure file operations of the FileSystemTool.
-"""
-
 from tools.file_system_tool import read_file, write_file, read_file_tool, write_file_tool
 
 
 def demo_file_operations():
-    """Demonstrate the FileSystemTool functions."""
     print("=== FileSystemTool Demo ===\n")
     
     # Read existing file
