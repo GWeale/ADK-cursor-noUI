@@ -9,3 +9,4 @@ def calculate_area(length, width):
 
 def calculate_perimeter(length, width):
     # of a rectangle
+    return 2 * (length + width)
