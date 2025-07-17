@@ -3,7 +3,9 @@ venv/
 env/
 ENV/
 README.md
+README_Phase2.md
 coding_agent/.env
+.adk_index/
 
 # Python artifacts
 __pycache__/

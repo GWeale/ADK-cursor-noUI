@@ -8,5 +8,4 @@ def calculate_area(length, width):
     return length * width
 
 def calculate_perimeter(length, width):
-
-# TODO: Add a function to calculate the perimeter of a rectangle 
+    # of a rectangle
