@@ -25,7 +25,7 @@ def read_file(file_path: str) -> str:
 def write_file(file_path: str, content: str) -> str:
     """Writes content to a file if it is within the safe project directory."""
     if not _is_path_safe(file_path):
-        return f"Error: Path '{file_path}' is outside the allowed project directory."
+        return f"Security Error: Path '{file_path}' is outside the allowed project directory."
     try:
         full_path = os.path.join(PROJECT_ROOT, file_path)
         os.makedirs(os.path.dirname(full_path), exist_ok=True)

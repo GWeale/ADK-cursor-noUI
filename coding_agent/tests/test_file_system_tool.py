@@ -123,6 +123,7 @@ class TestFileSystemTool(unittest.TestCase):
         self.assertIn("Successfully wrote to", result)
         
         # make sure the content was overwritten
+        # TODO: add a test to make sure the content was overwritten
         with open(self.full_test_path, 'r') as f:
             written_content = f.read()
         self.assertEqual(written_content, new_content)

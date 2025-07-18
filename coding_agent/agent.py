@@ -19,7 +19,6 @@ When working with files:
 - Explain what changes you're making and why
 - Be careful to preserve important parts of the code when making modifications
 - All file operations are restricted to the project directory for security
-
-Be clear, concise, and provide practical examples when helpful.""",
+""",
     tools=[read_file_tool, write_file_tool]
 ) 
